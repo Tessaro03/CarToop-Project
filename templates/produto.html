@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}   
+
+    <main>
+        <section>
+            {% for message in messages  %}
+                <div class='{{message.tags}}'> 
+                    <p><strong>{{ message }}</strong></p>
+                </div>
+            {% endfor %}
+            {% if user.id == veiculo.user.id %}
+            <div id='opcao' >
+                <a id='editar' href="{% url 'editar_veiculo' veiculo.id %}">  Editar </a>
+                <a id='excluir' href="{% url 'deletar_veiculo' veiculo.id %}"> Excluir </a>
+            </div>
+            {% endif %}
+            <div class='produto'>
+                <p id='nome'> {{veiculo.nome}} </p>
+                {% if user.is_authenticated %}
+                    {% if veiculo.id in veiculos_favoritados %}
+                        <a id="favorite" href="{% url 'desfavoritar' veiculo.id %}" ><span style="color: red;" class="material-symbols-outlined">favorite</span></a>
+                    {% else %}
+                        <a id="favorite" href="{% url 'favoritar' veiculo.id %}" ><span class="material-symbols-outlined">favorite</span></a>                                    
+                    {% endif %}
+                {% else %}
+                    <a id="favorite" href="{% url 'login' %}"><span class="material-symbols-outlined">favorite</span></a>
+                {% endif %} 
+                {% for foto in fotos %}
+                    <img class="card{% if forloop.first %} ativa{% endif %}" src="{{ foto.imagem.url }}">
+                {% endfor %}
+                <div id="botoes">
+                    <button id='mudar_esquerda' class='botao_mudar'><span class="material-symbols-outlined">keyboard_arrow_left</span></button>
+                    <button id='mudar_direita' class='botao_mudar'><span class="material-symbols-outlined">keyboard_arrow_right</span></button>
+                </div>
+                <div id="fotos">
+                {% for foto in fotos %}
+                    <img id='mini-foto'src="{{foto.imagem.url}}" alt=""> </img>                
+                {% endfor %}
+                </div>
+                <div id='comprar'>
+                    <p><strong>COMPRAR</strong></p>
+                </div>
+                <div id='contato'>
+                    <p><strong>CONTATO</strong></p>
+                </div>
+                
+                <div id="descricao_produto">
+                    <p id='valor'><strong> R$ {{veiculo.valor}}0 </strong></p>
+                    <h3> DESCRIÇÃO </h3>
+                    <div id='descricoes'>
+                        <div class='descricao'>                    
+                            <p>Km: {{veiculo.km}}0</p>
+                        </div>
+                        <div class='descricao'>                    
+                            <p> {{veiculo.ano}}</p>
+                        </div>                    
+                        <div class='descricao'>             
+                            <p> {{veiculo.motor}}</p>
+                        </div>
+                        <div class='descricao'>                    
+                            <p>{{veiculo.cor}} </p>
+                        </div>
+                        <div class='descricao-maior'>   
+                            <img src='../../media/icones/icons8-caixa-de-velocidade-32.png'>              
+                            <p>{{veiculo.câmbio}}</p>
+                        </div>
+                        <div class='descricao-maior'>                    
+                            <img src='../../media/icones/icons8-fuel-gas-32.png'>
+                            <p> {{veiculo.combustivel}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src={% static "js/script_produto.js" %}></script>
+
+{% endblock %}

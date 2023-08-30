@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}    
+<nav>
+    <h2 id="select_filtros" style="box-shadow: 3px 8px rgb(255, 255, 255)"><p>FILTROS</p> <span class="material-symbols-outlined"> arrow_circle_down</span></h2>
+     <h3 id='filtro-g'> FILTROS </h3>
+    <div id="filtros" >  
+       <div style='text-align: center;'> 
+            <a href={% url "estoque" %}><div class='btn'> <strong>TODOS</strong> </div></a>
+            <a href={% url "filtro" "MOTO" %}><div class='btn'> <strong>MOTO</strong> </div></a>
+            <a href={% url "filtro" "CARRO" %}><div class='btn'> <strong>CARRO</strong></div> </a>
+            <a href={% url "filtro" "VANS" %}><div class='btn'> <strong>VAN</strong> </div></a>
+            <a href={% url "filtro" "CAMINHOES" %}><div class='btn'> <strong>CAMINHÃO</strong> </div></a>
+       </div>
+        <hr style='margin:10px'>
+        <h3> MARCAS </h3>
+        <div id='logos'>
+            {% for marca in marcas %}
+                <a href="{% url "filtroMarca" marca.marca %}">
+                    <div class='logo'> 
+                        <img src='{{marca.logo.url}}'><br>
+                        <strong> {{ marca.marca }}</strong> 
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+    </div>
+</nav>
+<body>
+    <main>
+        {% for message in messages  %}
+            <div> 
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+        <section id="vitrine">
+            {% if cards %}
+                {% for veiculo in cards %}
+                    <div class="caixas">
+                        {% if veiculo.fotos.all.0.imagem.url == '' or veiculo.fotos.all.0.imagem.url == null %}
+                            <img src="https://i.pinimg.com/236x/41/22/8c/41228c877bbfcdbc1c0e5716b7deab9e.jpg" alt="foto {{veiculo.nome}}">
+                        {% else %}
+                            <img src="{{ veiculo.fotos.all.0.imagem.url }}" alt="foto {{veiculo.nome}}">
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            {% if veiculo.id in veiculos_favoritados %}
+                                <a id="favorite" href="{% url 'desfavoritar' veiculo.id %}" ><p><span style="color: red;" class="material-symbols-outlined">favorite</span></p></a>
+                            {% else %}
+                                <a id="favorite" href="{% url 'favoritar' veiculo.id %}" ><p><span class="material-symbols-outlined">favorite</span></p></a>                                    
+                            {% endif %}
+                        {% else %}
+                            <a id="favorite" href="{% url 'login' %}"><p><span class="material-symbols-outlined">favorite</span></p></a>
+                        {% endif %}   
+                        <div class='nome-ano'>
+                            <h4 id='nome'>{{ veiculo.nome }}</h4>
+                            <div id='ano'>
+                                <p>{{ veiculo.ano }}</p>
+                            </div>
+                        </div>
+                        <div id='descricao'>
+                            <p>{{ veiculo.legenda }}</p>
+                        </div>
+                        <div id='valor'>
+                            <p><strong>R$ {{ veiculo.valor }}0</strong></p>
+                        </div>
+                        <a href="{% url 'produto' veiculo.id %}">
+                            <div class="info">
+                                <strong>ACESSAR</strong>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+                <div id="paginator">
+                            {% if cards.has_other_pages %}
+                                {% if cards.has_previous %}
+                                    <a href="?page={{ cards.previous_page_number }}" class="page-link">&laquo;</a>
+                                {% else %}
+                                    <a class="page-desativado">&laquo;</a>
+                                {% endif %}
+                                {% for pagina in cards.paginator.page_range %}
+                                {% if cards.number == pagina %}
+                                    <a class="page-desativado">{{ pagina }}</a>
+                                {% else %}
+                                    <a href="?page={{pagina}}" class="page-link">{{pagina}}</a>
+                                {% endif %}
+                                {% endfor %}
+                                {% if cards.has_next %}
+                                    <a href="?page={{ cards.next_page_number }}" class="page-link">&raquo;</a>
+                                {% else %}
+                                    <a class="page-desativado">&raquo;</a>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                        </div>
+            {% else %}
+            <div id='zero-veiculos'>
+                <h2 >Nenhum Veiculo Encontrado !</h2>
+                <a href="">
+                    <a href={% url "estoque" %} class="botao"> Ver Estoque</a><br>
+                    </a>
+            </div>  
+            {% endif %}
+        </section>
+    </main>
+</body>
+<script src={% static "js/script_estoque.js" %}></script>
+{% endblock %}

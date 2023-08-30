@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}    
+
+<body>
+    <div id='dados-perfil'>
+        <h2> {{user.first_name}}</h2>
+        <p> {{user.email}}</p>
+    </div>
+    <div class='veiculos-perfil'>
+        <h3> Veiculos Anunciados </h3>
+        <div>
+            {% if  anunciados %}
+            {% for veiculo in anunciados %}
+            <a href="{% url 'produto' veiculo.id %}">
+                <div class='card-perfil'>
+                    <img src="{{ veiculo.fotos.all.0.imagem.url }}" alt=""></img>
+                    <p>{{veiculo.nome}}</p>
+                    <div></div>
+                </div>
+            </a>
+            {% endfor %}
+            {% else %}
+            <div  class='zero-veiculos-perfil'>
+                <h2 ><strong>Nenhum Veiculo Anunciado !</strong></h2>
+                <a href="">
+                    <a href="{% url 'adicionar_veiculo' %}"><div class="botao-perfil"><strong> Anunciar</strong> </div> </a><br>
+                    </a>
+            </div>  
+            {% endif %}
+        </div>
+    </div>
+    <div class='veiculos-perfil'>
+        <h3> Veiculos Favoritados </h3>
+        <div>
+            {% if  veiculos_favoritados%}
+            {% for veiculo in veiculos_favoritados %}
+            <a href="{% url 'produto' veiculo.id %}">
+                <div class='card-perfil'>
+                    <img src="{{ veiculo.fotos.all.0.imagem.url }}" alt=""></img>
+                    <p>{{veiculo.nome}}</p>
+                    <div></div>
+                </div>
+            </a>
+            {% endfor %}
+            {% else %}
+            <div class='zero-veiculos-perfil'>
+                <h2><strong>Nenhum Veiculo Favoritado !</strong></h2>
+                <a href="">
+                    <a href={% url "estoque" %}><div class="botao-perfil"> <strong>Ver Estoque</strong></div></a><br>
+                    </a>
+            </div>  
+            {% endif %}
+        </div>
+    </div>
+    <a href="{% url 'logout'%}"><div id='logout-perfil'><strong>Logout</strong></div></a>
+
+</body>
+<script src={% static "js/script_estoque.js" %}></script>
+{% endblock %}

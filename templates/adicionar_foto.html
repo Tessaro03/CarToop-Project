@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}   
+
+
+<div style='text-align: center'>
+    <div id='fotos-adicionar'>
+        <form action="{% url 'adicionar_foto' veiculo.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="etiqueta" for="id_posicao">
+                <strong>Posicao</strong>
+            </label>
+            <br>
+            <input type="text" name="posicao" class="form-control-foto" maxlength="3" required="" id="id_posicao">
+            
+            <br>
+            <label class="etiqueta" for="id_imagem">
+                <strong>Imagem</strong>
+            </label>
+            <br>
+            <input type="file" name="imagem" class="form-control-foto" accept="image/*" required="" id="id_imagem">
+            <br>
+            <button type='submit' id='confirma'> <strong>Editar</strong> </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

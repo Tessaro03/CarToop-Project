@@ -1,0 +1,257 @@
+@charset "UTF-8";
+
+
+#formulario{
+    width: 90%;
+    padding-top: 45px;
+    margin-top: 30px;
+    margin: auto;
+    border-radius: 0px 0px 15px 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.305);
+
+}
+.etiqueta{
+    color: rgb(3, 57, 133);
+}
+
+.form-control{
+    width: 80%;
+    height: 30px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 0.8em;
+    border: 1px solid rgba(0, 0, 0, 0.157);
+}
+
+
+.opcao{
+    position: relative;
+    width: 90%;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.cadastro{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-6%,-98%);
+    width: 50%;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0px 5px 0px 0px;
+    color: rgb(0, 84, 163);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.133);
+    font-size: 1.3em;
+}
+
+.cadastro2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%,-100%);
+    width: 48%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px 0px 0px 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 84, 163);
+    box-shadow: 0px -9px 20px rgba(0, 0, 0, 0.06);
+    font-size: 1.1em;
+}
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%,-100%);
+    width: 48%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;    
+    text-decoration: none;
+    border-radius: 0px 20px 0px 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 84, 163);
+    
+
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.192);
+    font-size: 1.1em;
+}
+.login2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-95%,-98%);
+    width: 50%;
+    padding-top: 20px;
+    padding-bottom: 12px;
+    text-align: center;
+    border-radius: 5px 0px 0px 0px;
+    text-decoration: none;
+    color: rgb(0, 84, 163);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px -9px 20px rgba(0, 0, 0, 0.06);
+    font-size: 1.3em;
+}
+
+
+#confirma{
+    padding: 9px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 5px;
+    margin-bottom: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(0, 84, 163);
+    border-radius: 10px;
+    border: 0px;
+    font-size: 1.1em;
+}
+
+#formulario-edicao{
+    
+    width: 95%;
+    max-width: 700px;
+    padding-top: 45px;
+    margin-top: 30px;
+    margin: auto;
+    border-radius: 0px 0px 15px 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.305);
+
+}
+.inputs{
+    display: inline-block;
+    margin-top: 10px;
+    width: 42%;
+}
+
+
+.form-control-long{
+    width: 80%;
+    height: 30px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 0.8em;
+    border: 1px solid rgba(0, 0, 0, 0.413);
+}
+
+.form-control-mini{
+    width: 85%;
+    height: 30px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 0.8em;
+    border: 1px solid rgba(0, 0, 0, 0.413);
+}
+
+.form-control-big{
+    width: 80%;
+    height: 140px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.413);
+}
+
+#fotos-editar{
+    text-align: center;
+    display: inline-flex;
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    height: 250px;
+}
+
+#foto-editar-foto{
+    width: 155px;
+    height: 155px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.card-foto{
+    text-align: center;
+    width: 155px;
+    margin-right: 15px;
+}
+
+.mudar-foto{
+    padding-top: 5px;
+    height: 30px;
+    background-color: #0054a3;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: -1px;
+}
+
+.form-control-foto{
+    width: 42%;
+    height: 18.5px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.274);
+}
+.form-control-foto:focus{
+    border: 0px solid rgba(255, 255, 255, 0.274);
+}
+
+.form-control-escolher{
+    padding: 1px;
+    border: 0px solid rgb(0, 0, 0);
+    background-color: rgb(0, 84, 163);
+    color: blue;
+    border-radius: 10px;
+    width: 41%;
+
+}
+
+.editores-foto{
+    width: 70%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#editar_foto{
+    border: 0px solid black;
+}
+
+#adicionar-foto{
+    width: 70%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: rgb(0, 84, 163);
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+#adicionar-foto:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 84, 163);
+    border: 1px solid rgb(0, 84, 163);
+}
+
+#fotos-adicionar{
+    margin-top: 20px;
+    display: block;
+}
+
+
+#fotos-adicionar > form > input{
+    margin-bottom: 10px;
+    height: 40px;
+}

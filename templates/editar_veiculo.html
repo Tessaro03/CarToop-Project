@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}   
+
+
+<div style='text-align: center'>
+    {% for message in messages  %}
+    <div  class='{{message.tags}}'> 
+        <p><strong>{{ message }}</strong></p>
+    </div>
+    {% endfor %}
+
+    <a href="{% url 'adicionar_foto' veiculo.id %}">
+        <div id='adicionar-foto'> <strong>Adicionar Foto</strong> </div>
+    </a>
+    
+    {% if fotos %}
+    <div id='fotos-editar'>
+        {% for form_foto in forms %}
+            <form action={% url 'editar_foto' form_foto.foto.id %} method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class='card-foto'>
+                    <div class='mudar-foto'>
+                        <input type="text" name="posicao" value="{{form_foto.foto.posicao}}" class="form-control-foto" maxlength="3" required="" id="id_posicao">
+                    </div>
+                    <img id="foto-editar-foto" src="{{form_foto.foto.imagem.url}}" alt="Foto do veículo">
+                    <div class='editores-foto'>
+                        <button type='submit' id='editar_foto'> <img src='../../media/icones/editar.png'> </button>
+                        <a href="{% url 'deletar_foto' form_foto.foto.id %}"><div id='excluir_foto'><img src='../../media/icones/excluir.png'></div></a>
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form id='editar-carro' action={%url 'editar_veiculo' foto_id %} method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+    <div id='formulario-edicao'>
+    {% for field in form.visible_fields %}
+        {% if field.label in inputs %}
+            <div class='inputs'>
+                <label class='etiqueta' for="{{form.id_for_label}}">
+                    <strong>{{ field.label }}</strong>
+                </label> <br>
+                {{ field }}
+            </div>
+        {% else %}
+            <div>
+                <label class='etiqueta' for="{{form.id_for_label}}">
+                        <strong>{{ field.label }}</strong>
+                    </label> <br>
+                {{ field }}
+            </div>
+        {% endif %}
+    {% endfor %}
+        <div>
+            <button type='submit' id='confirma'> <strong>Salvar</strong> </button>
+        </div>
+    </div>
+    </form>
+    
+    
+    
+</div>
+
+
+{% endblock %}
