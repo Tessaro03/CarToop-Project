@@ -141,7 +141,7 @@ sys.path.insert(0,os.path.join(PROJECT_ROOT,'../apps'))
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dbz90irql',
-    'API_KEY': '321149665735522',
-    'API_SECRET': 'QPEJnU2b694R36eJPaM3M4eok74',
+    'CLOUD_NAME':  config('CLOUD_NAME'),
+    'API_KEY':  config('API_KEY'),
+    'API_SECRET':  config('API_SECRET'),
 }
